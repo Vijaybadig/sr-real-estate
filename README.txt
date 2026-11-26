@@ -1,48 +1,44 @@
-SR REAL ESTATE — WEBSITE
+SR REAL ESTATE — WEBSITE PACKAGE
 
-WHAT'S INCLUDED
-- Mobile-friendly real estate website
-- Buy / rent property listings and filters
-- Property detail pages
-- WhatsApp enquiry buttons connected to +91 9611413920
-- Contact and list-your-property forms
-- Admin dashboard to add, edit and delete property listings
-- Office address, contact numbers and timings
+Brand: SR Real Estate
+Tagline: We make your dream house.
+Services: Buy • Sell • Rent
+Location: Udupi, Karnataka
 
-RUN ON WINDOWS
-1. Install Python 3.12 or newer from https://www.python.org/downloads/
-2. Extract this ZIP to a folder, for example Desktop\SR Real Estate.
-3. Open the extracted folder in VS Code.
-4. Select Terminal > New Terminal.
-5. Run these commands one by one:
+PROJECT STRUCTURE
+- app.py: Flask application and property/admin routes
+- templates/: all HTML templates
+- static/style.css: website styling
+- static/uploads/: uploaded property photos
+- requirements.txt: Python dependencies
+- Procfile: Render start command
 
-   py -m venv venv
-   .\venv\Scripts\activate
-   pip install -r requirements.txt
-   python app.py
+RUN LOCALLY ON WINDOWS
+1. Install Python 3.12 or newer.
+2. Open this project folder in VS Code.
+3. Open Terminal > New Terminal.
+4. Run: py -m venv venv
+5. Run: .\venv\Scripts\activate
+6. Run: pip install -r requirements.txt
+7. Run: python app.py
+8. Open http://127.0.0.1:5000
 
-6. Open http://127.0.0.1:5000 in your laptop browser.
-
-OPEN ON YOUR PHONE (SAME WI-FI)
-1. Keep the website running on your laptop.
-2. In another PowerShell window, run ipconfig.
-3. Find the IPv4 Address under the Wi-Fi adapter.
-4. On your phone connected to the same Wi-Fi, open http://YOUR-IP:5000.
+RENDER DEPLOYMENT
+Build command: pip install -r requirements.txt
+Start command: gunicorn app:app
+Environment variables required:
+- SECRET_KEY: use a long random secret value
+- ADMIN_USERNAME: choose a private username
+- ADMIN_PASSWORD: choose a strong unique password
 
 ADMIN
-- Open http://127.0.0.1:5000/admin/login
-- Default username: admin
-- Default password: ChangeMe123!
-- Change the default password and SECRET_KEY before public launch.
+Open /admin/login on your website. Do not use the default credentials in production.
 
 BUSINESS DETAILS
-Brand: SR Real Estate
 Phones: +91 96202 53110 / +91 96114 13920
 WhatsApp: +91 96114 13920
 Address: Poonja Towers, 3rd Floor, Near UB Towers, Opposite Giriyas Udupi Branch, Kalpana Bus Stop, Udupi District.
-Timings: Monday–Saturday 9:00 AM–1:30 PM and 3:00 PM–8:00 PM; Sunday 9:00 AM–1:30 PM.
+Hours stated for Monday–Saturday: 9:00 AM–1:30 PM and 3:00 PM–8:00 PM. Confirm Sunday hours before publishing them.
 
-To add a property: log in to Admin > Add Property. Upload JPG, PNG or WEBP photos.
-
-IMPORTANT
-This project is a local website package, not a live public website. Public hosting, persistent database/photo storage, a custom domain and production security setup are separate steps. Do not publish with the default admin password.
+IMPORTANT PRODUCTION NOTES
+This package uses SQLite and stores uploaded photos in static/uploads. On a typical ephemeral hosting filesystem, data and photos may be lost after restarts or redeployments. Before relying on this site for real listings and enquiries, configure persistent storage or a managed database and persistent image storage. The property listing form sends an enquiry to the site; it does not automatically publish a listing. Admin must add approved listings.
